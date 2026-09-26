@@ -14,6 +14,13 @@ type BankAccount {
     balance : Float,
     currency : String,
     type : String
+    customer: Customer
+}
+
+type Customer {
+    id : ID,
+    name: String,
+    bankAccounts : [BankAccount]
 }
 input BankAccountDTO {
     balance : Float,
