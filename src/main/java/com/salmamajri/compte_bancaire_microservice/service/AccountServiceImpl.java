@@ -25,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
     public BankAccountResponseDTO addAccount(BankAccountRequestDTO bankAccountDTO) {
         BankAccount bankAccount = BankAccount.builder()
                 .id(UUID.randomUUID().toString())
-                .createdAt(new Date())
+                .createdAt(new Date().getTime())
                 .balance(bankAccountDTO.getBalance())
                 .type(bankAccountDTO.getType())
                 .currency(bankAccountDTO.getCurrency())

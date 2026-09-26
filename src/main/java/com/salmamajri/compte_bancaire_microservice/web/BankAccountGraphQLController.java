@@ -3,6 +3,7 @@ package com.salmamajri.compte_bancaire_microservice.web;
 import com.salmamajri.compte_bancaire_microservice.entities.BankAccount;
 import com.salmamajri.compte_bancaire_microservice.repositories.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -17,5 +18,10 @@ public class BankAccountGraphQLController {
     @QueryMapping
     public List<BankAccount> accountsList(){
         return bankAccountRepository.findAll();
+    }
+    @QueryMapping
+    public BankAccount bankAccountById(@Argument String id){
+        return bankAccountRepository.findById(id)
+                .orElseThrow(()->new RuntimeException(String.format("Account %s not found",id)));
     }
 }
