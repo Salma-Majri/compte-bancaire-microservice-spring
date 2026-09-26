@@ -44,5 +44,9 @@ public class BankAccountGraphQLController {
         return accountService.updateAccount(id,bankAccount);
     }
 
+    @MutationMapping
+    public void deleteAccount(@Argument String id){
+        bankAccountRepository.deleteById(id);
+    }
     
 }
