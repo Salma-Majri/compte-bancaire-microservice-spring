@@ -1,19 +1,24 @@
 package com.salmamajri.compte_bancaire_microservice.web;
 
+import com.salmamajri.compte_bancaire_microservice.dto.BankAccountRequestDTO;
+import com.salmamajri.compte_bancaire_microservice.dto.BankAccountResponseDTO;
 import com.salmamajri.compte_bancaire_microservice.entities.BankAccount;
 import com.salmamajri.compte_bancaire_microservice.repositories.BankAccountRepository;
+import com.salmamajri.compte_bancaire_microservice.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
-
 public class AccountRestController {
-    private final BankAccountRepository bankAccountRepository;
-    public AccountRestController(BankAccountRepository bankAccountRepository) {
+
+    private BankAccountRepository bankAccountRepository;
+    private AccountService accountService;
+
+    public AccountRestController(BankAccountRepository bankAccountRepository, AccountService accountService) {
         this.bankAccountRepository = bankAccountRepository;
+        this.accountService = accountService;
     }
 
     @GetMapping("/bankAccounts")
@@ -28,9 +33,8 @@ public class AccountRestController {
     }
 
     @PostMapping("/bankAccounts")
-    public BankAccount save(@RequestBody BankAccount bankAccount){
-        if (bankAccount.getId()==null) bankAccount.setId(UUID.randomUUID().toString());
-        return bankAccountRepository.save(bankAccount);
+    public BankAccountResponseDTO save(@RequestBody BankAccountRequestDTO bankAccountRequestDTO){
+        return accountService.addAccount(bankAccountRequestDTO);
     }
 
     @PutMapping("/bankAccounts/{id}")
