@@ -3,12 +3,13 @@ package com.salmamajri.compte_bancaire_microservice.web;
 import com.salmamajri.compte_bancaire_microservice.entities.BankAccount;
 import com.salmamajri.compte_bancaire_microservice.repositories.BankAccountRepository;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/api")
+
 public class AccountRestController {
     private final BankAccountRepository bankAccountRepository;
     public AccountRestController(BankAccountRepository bankAccountRepository) {
