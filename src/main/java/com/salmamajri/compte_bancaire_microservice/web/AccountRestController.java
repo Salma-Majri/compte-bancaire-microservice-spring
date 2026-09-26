@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 public class AccountRestController {
-    private BankAccountRepository bankAccountRepository;
+    private final BankAccountRepository bankAccountRepository;
     public AccountRestController(BankAccountRepository bankAccountRepository) {
         this.bankAccountRepository = bankAccountRepository;
     }
