@@ -72,11 +72,11 @@ Spring Data REST permet d'exposer directement les repositories tout en contrôla
 
 * **Recherche par type de compte (`findByType`) :**
 
-![Recherche par type](images/7.png)
+![Recherche par type](images/8.png)
 
 * **Utilisation d'une projection personnalisée (`projection=p1`) :**
 
-![Projection P1](images/8.png)
+![Projection P1](images/9.png)
 
 ---
 
@@ -85,14 +85,14 @@ L'API GraphQL offre une flexibilité totale dans la récupération des données 
 
 * **Récupération de la liste des comptes :**
 
-![GraphQL Accounts List](images/9.png)
+![GraphQL Accounts List](images/14.png)
 
 * **Recherche d'un compte par son identifiant (`bankAccountById`) :**
 
-![GraphQL Account By ID](images/10.png)
+![GraphQL Account By ID](images/15.png)
 
 * **Gestion personnalisée des erreurs GraphQL (ID introuvable ou invalide) :**
 
-| Erreur Interne (ID non trouvé) | Message d'Erreur Personnalisé |
-| :---: | :---: |
-| ![GraphQL Internal Error](images/11.png) | ![GraphQL Custom Error](images/12.png) |
+|      Erreur Interne (ID non trouvé)      |     Message d'Erreur Personnalisé      |
+|:----------------------------------------:|:--------------------------------------:|
+| ![GraphQL Internal Error](images/12.png) | ![GraphQL Custom Error](images/13.png) |
