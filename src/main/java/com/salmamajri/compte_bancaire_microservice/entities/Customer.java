@@ -1,4 +1,5 @@
 package com.salmamajri.compte_bancaire_microservice.entities;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,5 +22,6 @@ public class Customer {
     private Long id;
     private String name;
     @OneToMany(mappedBy = "customer")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<BankAccount> bankAccounts;
 }

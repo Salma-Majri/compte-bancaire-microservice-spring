@@ -3,7 +3,9 @@ package com.salmamajri.compte_bancaire_microservice.web;
 import com.salmamajri.compte_bancaire_microservice.dto.BankAccountRequestDTO;
 import com.salmamajri.compte_bancaire_microservice.dto.BankAccountResponseDTO;
 import com.salmamajri.compte_bancaire_microservice.entities.BankAccount;
+import com.salmamajri.compte_bancaire_microservice.entities.Customer;
 import com.salmamajri.compte_bancaire_microservice.repositories.BankAccountRepository;
+import com.salmamajri.compte_bancaire_microservice.repositories.CustomerRepository;
 import com.salmamajri.compte_bancaire_microservice.service.AccountService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,8 +23,11 @@ public class BankAccountGraphQLController {
 
     @Autowired
     private BankAccountRepository bankAccountRepository;
+
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private CustomerRepository customerRepository;
     @QueryMapping
     public List<BankAccount> accountsList(){
         return bankAccountRepository.findAll();
@@ -48,5 +53,9 @@ public class BankAccountGraphQLController {
     public void deleteAccount(@Argument String id){
         bankAccountRepository.deleteById(id);
     }
-    
+
+    @QueryMapping
+    public List<Customer> customers(){
+        return customerRepository.findAll();
+    }
 }
