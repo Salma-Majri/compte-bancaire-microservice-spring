@@ -3,6 +3,7 @@ package com.salmamajri.compte_bancaire_microservice.service;
 import com.salmamajri.compte_bancaire_microservice.dto.BankAccountRequestDTO;
 import com.salmamajri.compte_bancaire_microservice.dto.BankAccountResponseDTO;
 import com.salmamajri.compte_bancaire_microservice.entities.BankAccount;
+import com.salmamajri.compte_bancaire_microservice.mappers.AccountMapper;
 import com.salmamajri.compte_bancaire_microservice.repositories.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private BankAccountRepository bankAccountRepository;
+    @Autowired
+    private AccountMapper accountMapper;
 
     @Override
     public BankAccountResponseDTO addAccount(BankAccountRequestDTO bankAccountDTO) {
@@ -29,14 +32,7 @@ public class AccountServiceImpl implements AccountService {
                 .build();
 
         BankAccount saveBankAccount = bankAccountRepository.save(bankAccount);
-
-        BankAccountResponseDTO bankAccountResponseDTO = BankAccountResponseDTO.builder()
-                .id(saveBankAccount.getId())
-                .type(saveBankAccount.getType())
-                .createdAt(saveBankAccount.getCreatedAt())
-                .currency(saveBankAccount.getCurrency())
-                .balance(saveBankAccount.getBalance())
-                .build();
+        BankAccountResponseDTO bankAccountResponseDTO = accountMapper.fromBankAccount(saveBankAccount);
 
         return bankAccountResponseDTO;
     }

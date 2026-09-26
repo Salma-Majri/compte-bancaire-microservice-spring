@@ -3,6 +3,7 @@ package com.salmamajri.compte_bancaire_microservice.web;
 import com.salmamajri.compte_bancaire_microservice.dto.BankAccountRequestDTO;
 import com.salmamajri.compte_bancaire_microservice.dto.BankAccountResponseDTO;
 import com.salmamajri.compte_bancaire_microservice.entities.BankAccount;
+import com.salmamajri.compte_bancaire_microservice.mappers.AccountMapper;
 import com.salmamajri.compte_bancaire_microservice.repositories.BankAccountRepository;
 import com.salmamajri.compte_bancaire_microservice.service.AccountService;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ public class AccountRestController {
 
     private BankAccountRepository bankAccountRepository;
     private AccountService accountService;
+    private AccountMapper accountMapper;
 
     public AccountRestController(BankAccountRepository bankAccountRepository, AccountService accountService) {
         this.bankAccountRepository = bankAccountRepository;
